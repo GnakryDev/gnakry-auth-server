@@ -22,7 +22,7 @@ app.include_router(router)
 @app.get("/auth")
 def user_auth(credentials: HTTPBasicCredentials = Depends(security)):
     valid_user = False
-    with open("users_list.yml") as file:
+    with open("config/users_list.yml") as file:
         user_list = yaml.load(file, Loader=yaml.FullLoader)
     for user in user_list["user_list"]:
         if credentials.username == user["username"] and hashlib.sha256(credentials.password.encode('utf-8')).hexdigest() == user["password"]:
