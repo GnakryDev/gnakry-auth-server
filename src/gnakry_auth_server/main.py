@@ -25,7 +25,7 @@ def user_auth(credentials: HTTPBasicCredentials = Depends(security)):
     with open("config/users_list.yml") as file:
         user_list = yaml.load(file, Loader=yaml.FullLoader)
     for user in user_list["user_list"]:
-        if credentials.username == user["username"] and hashlib.sha256(credentials.password.encode('utf-8')).hexdigest() == user["password"]:
+        if credentials.username == user["username"] and hashlib.sha512(credentials.password.encode('utf-8')).hexdigest().lower() == user["password"].lower():
             valid_user = True
             break
     if valid_user:
