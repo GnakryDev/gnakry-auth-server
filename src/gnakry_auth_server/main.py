@@ -19,7 +19,7 @@ security = HTTPBasic()
 app.include_router(router)
 
 
-@app.get("/auth")
+@app.get("/auth/basic")
 def user_auth(credentials: HTTPBasicCredentials = Depends(security)):
     valid_user = False
     with open("config/users_list.yml") as file:

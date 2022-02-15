@@ -1,0 +1,11 @@
+version: '3.9'
+
+services:
+  gnakry-auth:
+    image: rougeo/gnakry-auth-server:latest
+    networks:
+      - proxy_https_default # Your traefik network
+networks:
+  # Your traefik network
+  proxy_https_default:
+    external: true

@@ -8,6 +8,8 @@ COPY . /app
 
 RUN poetry install
 
+VOLUME [ "/app/config" ]
+
 EXPOSE 8080 80
 
 ENTRYPOINT ["poetry", "run", "uvicorn",  "--host", "0.0.0.0", "--port", "80",  "gnakry_auth_server.main:app" ]
