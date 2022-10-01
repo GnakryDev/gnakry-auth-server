@@ -3,6 +3,7 @@ version: '3.9'
 services:
   gnakry-auth:
     image: rougeo/gnakry-auth-server:latest
+    build: .
     networks:
       - proxy_https_default # Your traefik network
 networks:
